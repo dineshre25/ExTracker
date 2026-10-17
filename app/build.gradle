@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.finance.iostracker'
+    compileSdk 34
+
+    androidResources {
+        noCompress 'bin', 'task', 'tflite'
+    }
+
+    defaultConfig {
+        applicationId "com.finance.iostracker"
+        minSdk 26 // Required for MediaPipe Tasks GenAI & java.time
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+
+    // JSON Serialization (Portable to Windows Desktop Java)
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // MediaPipe Tasks GenAI for On-Device Gemma Inference
+    implementation 'com.google.mediapipe:tasks-genai:0.10.27'
+
+    // Google Sign-In & Drive REST API (drive.appdata scope)
+    implementation 'com.google.android.gms:play-services-auth:21.0.0'
+    implementation 'com.google.http-client:google-http-client-gson:1.43.3'
+    implementation('com.google.apis:google-api-services-drive:v3-rev20230822-2.0.0') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+
+    // OkHttp for Optional Cloud AI Fallback (Gemini / Claude)
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+}

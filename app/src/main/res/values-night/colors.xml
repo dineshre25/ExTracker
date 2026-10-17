@@ -1,0 +1,12 @@
+<!-- res/values-night/colors.xml (iOS OLED Dark Mode) -->
+<resources>
+    <color name="ios_bg_grouped">#000000</color>
+    <color name="ios_card_surface">#1C1C1E</color>
+    <color name="ios_text_primary">#FFFFFF</color>
+    <color name="ios_text_secondary">#8E8E93</color>
+    <color name="ios_tint_blue">#0A84FF</color>
+    <color name="ios_green">#30D158</color>
+    <color name="ios_red">#FF453A</color>
+    <color name="ios_pink_invest">#FF375F</color>
+    <color name="ios_divider">#38383A</color>
+</resources>

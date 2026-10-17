@@ -1,0 +1,7 @@
+<!-- res/menu/bottom_nav_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_home" android:icon="@android:drawable/ic_menu_agenda" android:title="Transactions" />
+    <item android:id="@+id/nav_analytics" android:icon="@android:drawable/ic_menu_sort_by_size" android:title="Analytics" />
+    <item android:id="@+id/nav_coach" android:icon="@android:drawable/ic_menu_info_details" android:title="AI Coach" />
+    <item android:id="@+id/nav_settings" android:icon="@android:drawable/ic_menu_preferences" android:title="Settings" />
+</menu>
