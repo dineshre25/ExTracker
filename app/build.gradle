@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    alias(libs.plugins.android.application)
 }
 
 android {
@@ -20,6 +20,18 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+            excludes += 'META-INF/DEPENDENCIES'
+            excludes += 'META-INF/LICENSE'
+            excludes += 'META-INF/LICENSE.txt'
+            excludes += 'META-INF/NOTICE'
+            excludes += 'META-INF/NOTICE.txt'
+            excludes += 'META-INF/INDEX.LIST'
+        }
     }
 
     compileOptions {
@@ -43,6 +55,10 @@ dependencies {
     // Google Sign-In & Drive REST API (drive.appdata scope)
     implementation 'com.google.android.gms:play-services-auth:21.0.0'
     implementation 'com.google.http-client:google-http-client-gson:1.43.3'
+    implementation('com.google.http-client:google-http-client-android:1.43.3') {
+        exclude group: 'org.apache.httpcomponents'
+    }
+    implementation 'com.google.api-client:google-api-client-android:2.9.1'
     implementation('com.google.apis:google-api-services-drive:v3-rev20230822-2.0.0') {
         exclude group: 'org.apache.httpcomponents'
     }

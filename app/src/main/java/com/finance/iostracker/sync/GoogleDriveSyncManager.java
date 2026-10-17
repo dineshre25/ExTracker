@@ -6,9 +6,9 @@ import android.os.Looper;
 
 import com.finance.iostracker.data.FinanceRepository;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.http.FileContent;
+import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
@@ -50,7 +50,7 @@ public class GoogleDriveSyncManager {
                 credential.setSelectedAccount(account.getAccount());
 
                 Drive driveService = new Drive.Builder(
-                        AndroidHttp.newCompatibleTransport(),
+                        new NetHttpTransport(),
                         new GsonFactory(),
                         credential)
                         .setApplicationName("iOS Personal Finance Tracker")
