@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ios_bg_grouped">
+
+    <!-- 1. HOME / DASHBOARD SECTION -->
+    <LinearLayout
+        android:id="@+id/sectionHome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginBottom="72dp">
+
+        <!-- Top Liquid Balance Hero Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_ios_card"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AVAILABLE LIQUID BALANCE"
+                android:textColor="@color/ios_text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvTotalLiquidBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="7 157,50 €"
+                android:textColor="@color/ios_text_primary"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <!-- Quick Stats Row: Income | Expenses | Invested (TR) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Income" android:textColor="@color/ios_text_secondary" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvQuickIncome" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+2500 €" android:textColor="@color/ios_green" android:textStyle="bold" android:textSize="16sp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Expenses" android:textColor="@color/ios_text_secondary" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvQuickExpenses" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-43 €" android:textColor="@color/ios_red" android:textStyle="bold" android:textSize="16sp"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Invested (TR)" android:textColor="@color/ios_text_secondary" android:textSize="12sp"/>
+                    <TextView android:id="@+id/tvQuickInvested" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-300 €" android:textColor="@color/ios_pink_invest" android:textStyle="bold" android:textSize="16sp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Segmented Controller: This Month | All Time -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <Button
+                android:id="@+id/btnSegmentThisMonth"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="This Month" />
+            <Button
+                android:id="@+id/btnSegmentAllTime"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="All Time" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTransactions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_ios_card"
+            android:padding="8dp" />
+    </LinearLayout>
+
+    <!-- 2. ANALYTICS SECTION -->
+    <ScrollView
+        android:id="@+id/sectionAnalytics"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_marginBottom="72dp"
+        android:padding="16dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Analytics" android:textSize="28sp" android:textStyle="bold" android:textColor="@color/ios_text_primary" android:layout_marginBottom="12dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_ios_card" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Category Distribution" android:textStyle="bold" android:textColor="@color/ios_text_secondary"/>
+                <com.finance.iostracker.ui.IosDonutChartView
+                    android:id="@+id/iosDonutChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp" />
+                <LinearLayout android:id="@+id/layoutCategoryBreakdown" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_ios_card" android:orientation="vertical" android:padding="16dp" android:layout_marginTop="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6-Month Spending Histogram" android:textStyle="bold" android:textColor="@color/ios_text_secondary"/>
+                <com.finance.iostracker.ui.IosHistogramView
+                    android:id="@+id/iosHistogram"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 3. AI COACH SECTION -->
+    <ScrollView
+        android:id="@+id/sectionCoach"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_marginBottom="72dp"
+        android:padding="16dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="AI Financial Coach" android:textSize="28sp" android:textStyle="bold" android:textColor="@color/ios_text_primary" android:layout_marginBottom="12dp"/>
+            <LinearLayout android:id="@+id/layoutCoachCards" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 4. SETTINGS & VAULT SECTION -->
+    <ScrollView
+        android:id="@+id/sectionSettings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:layout_marginBottom="72dp"
+        android:padding="16dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Settings &amp; Vault" android:textSize="28sp" android:textStyle="bold" android:textColor="@color/ios_text_primary" android:layout_marginBottom="12dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_ios_card" android:orientation="vertical" android:padding="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Initial Starting Savings (€)" android:textColor="@color/ios_text_secondary"/>
+                <EditText android:id="@+id/etStartingSavings" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="numberDecimal"/>
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Optional Cloud AI Key (Gemini Fallback)" android:textColor="@color/ios_text_secondary"/>
+                <EditText android:id="@+id/etCloudApiKey" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Leave blank for 100% On-Device LiteRT/Gemma"/>
+
+                <Button android:id="@+id/btnSaveSettings" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Save Configuration" android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_ios_card" android:orientation="vertical" android:padding="16dp" android:layout_marginTop="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="30-Day Recycling Bin" android:textStyle="bold" android:textColor="@color/ios_text_primary"/>
+                <TextView android:id="@+id/tvRecycleBinCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 items" android:textColor="@color/ios_text_secondary"/>
+                <Button android:id="@+id/btnOpenRecycleBin" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Manage / Restore Deleted Items"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/bg_ios_card" android:orientation="vertical" android:padding="16dp" android:layout_marginTop="16dp">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Google Drive Sync (drive.appdata)" android:textStyle="bold" android:textColor="@color/ios_text_primary"/>
+                <TextView android:id="@+id/tvSyncStatus" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ready for Android &amp; Windows sync" android:textColor="@color/ios_text_secondary"/>
+                <Button android:id="@+id/btnGoogleSignInSync" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sign in with Google &amp; Sync Now" android:layout_marginTop="8dp"/>
+                <Button android:id="@+id/btnExportJson" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Export Manual JSON Backup"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Action Hub (+) Floating Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddTransaction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="84dp"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/ios_tint_blue"
+        app:tint="#FFFFFF" />
+
+    <!-- 4-Tab iOS Bottom Navigation Bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_gravity="bottom"
+        android:background="@color/ios_card_surface"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

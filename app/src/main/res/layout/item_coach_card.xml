@@ -1,0 +1,23 @@
+<!-- res/layout/item_coach_card.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/bg_ios_card"
+    android:orientation="vertical"
+    android:padding="18dp">
+    <TextView
+        android:id="@+id/tvInsightTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/ios_text_primary"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvInsightMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/ios_text_secondary"
+        android:textSize="14sp" />
+</LinearLayout>

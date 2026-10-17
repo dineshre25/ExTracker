@@ -1,0 +1,12 @@
+<!-- res/values/colors.xml (iOS Light Mode) -->
+<resources>
+    <color name="ios_bg_grouped">#F2F2F7</color>
+    <color name="ios_card_surface">#FFFFFF</color>
+    <color name="ios_text_primary">#000000</color>
+    <color name="ios_text_secondary">#8E8E93</color>
+    <color name="ios_tint_blue">#007AFF</color>
+    <color name="ios_green">#34C759</color>
+    <color name="ios_red">#FF3B30</color>
+    <color name="ios_pink_invest">#FF2D55</color>
+    <color name="ios_divider">#C6C6C8</color>
+</resources>
